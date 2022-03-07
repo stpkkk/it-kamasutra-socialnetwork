@@ -5,7 +5,7 @@ const Navbar = () => {
           <a>Profile</a>
         </div>
         <div>
-          <a>Messagess</a>
+          <a>Messages</a>
         </div>
         <div>
           <a>News</a>
