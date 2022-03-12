@@ -11,6 +11,12 @@ const MyPosts = () => {
       </div>
       <div className={s.posts}>
         <div className={s.item}>
+          <Post message="Hi! How are you" likes="10" />
+        </div>
+        <div className={s.item}>
+          <Post message="It`s my first post" likes="18" />
+        </div>
+        {/* <div className={s.item}>
           <Post />
         </div>
         <div className={s.item}>
@@ -21,13 +27,7 @@ const MyPosts = () => {
         </div>
         <div className={s.item}>
           <Post />
-        </div>
-        <div className={s.item}>
-          <Post />
-        </div>
-        <div className={s.item}>
-          <Post />
-        </div>
+        </div> */}
       </div>
     </div>
   );
