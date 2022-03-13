@@ -1,6 +1,12 @@
 .nav {
-	grid-area: n;
-	background-color: #5da380;
-  }
+  grid-area: n;
+  background-color: #5da380;
+  padding: 20px;
+}
 
-  
+.item {
+  text-decoration: none;
+  color: pink;
+}
+
+
