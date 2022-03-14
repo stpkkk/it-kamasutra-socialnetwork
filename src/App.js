@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Messages from "./components/Messages/messages";
+import Dialogs from "./components/Dialogs/dialogs";
 import News from "./components/News/news";
 import Music from "./components/Music/music";
 import Settings from "./components/Settings/settings";
@@ -16,11 +16,11 @@ const App = () => {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile" element={<Messages />} />
-            <Route path="/messages" element={<Profile />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/profile/*" element={<Profile />} />
+            <Route path="/dialogs/*" element={<Dialogs />} />
+            <Route path="/news/*" element={<News />} />
+            <Route path="/music/*" element={<Music />} />
+            <Route path="/settings/*" element={<Settings />} />
           </Routes>
         </div>
       </div>

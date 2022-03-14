@@ -4,13 +4,13 @@ const Navbar = () => {
   return (
     <nav className={s.nav}>
       <div>
-        <NavLink className={s.item} activeClassName={s.active} to="/messages">
+        <NavLink className={s.item} activeClassName={s.active} to="/profile">
           Profile
         </NavLink>
       </div>
       <div>
-        <NavLink className={s.item} activeClassName={s.active} to="/profile">
-          Messages
+        <NavLink className={s.item} activeClassName={s.active} to="/dialogs">
+          Dialogs
         </NavLink>
       </div>
       <div>
