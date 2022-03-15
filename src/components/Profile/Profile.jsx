@@ -1,19 +1,12 @@
 import s from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
   return (
     <div className={s.content}>
-      <div>
-        <img
-          src="https://www.planetware.com/wpimages/2019/11/canada-in-pictures-beautiful-places-to-photograph-morraine-lake.jpg"
-          alt="lake"
-        />
-      </div>
-      <div>ava + discription</div>
-      <div>
-        <MyPosts />
-      </div>
+      <ProfileInfo />
+      <MyPosts />
     </div>
   );
 };
