@@ -22,32 +22,7 @@ const MyPosts = (props) => {
           <button>Remove</button>
         </div>
       </div>
-      <div className={s.posts}>
-        <div className={s.item}>
-          <Post
-            message={postData[0].message}
-            likesCount={postData[0].likesCount}
-          />
-        </div>
-        <div className={s.item}>
-          <Post
-            message={postData[1].message}
-            likesCount={postData[1].likesCount}
-          />
-        </div>
-        {/* <div className={s.item}>
-          <Post />
-        </div>
-        <div className={s.item}>
-          <Post />
-        </div>
-        <div className={s.item}>
-          <Post />
-        </div>
-        <div className={s.item}>
-          <Post />
-        </div> */}
-      </div>
+      <div className={s.posts}>{postElemets}</div>
     </div>
   );
 };
