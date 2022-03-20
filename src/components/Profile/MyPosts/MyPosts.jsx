@@ -1,13 +1,8 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-const MyPosts = (props) => {
-  let postData = [
-    { id: 1, message: "Hi! How are you", likesCount: "7" },
-    { id: 2, message: "It`s my first post", likesCount: "42" },
-  ];
-
-  let postElemets = postData.map((p) => (
-    <Post message={p.message} likesCount={p.likesCount} />
+const MyPosts = ({ post }) => {
+  const postElement = post.map((p) => (
+    <Post message={p.message} likesCount={p.likesCount} key={p.id} />
   ));
 
   return (
@@ -22,7 +17,7 @@ const MyPosts = (props) => {
           <button>Remove</button>
         </div>
       </div>
-      <div className={s.posts}>{postElemets}</div>
+      <div className={s.posts}>{postElement}</div>
     </div>
   );
 };
