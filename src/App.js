@@ -7,7 +7,7 @@ import News from "./components/News/news";
 import Music from "./components/Music/music";
 import Settings from "./components/Settings/settings";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { dialogsData, messagesData, postData } from "./index";
+import { state } from "./redux/state";
 
 const App = () => {
   return (
@@ -17,11 +17,11 @@ const App = () => {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-		  <Route path="/profile/*" element={<Profile post={postData} />} />
+            <Route path="/profile/*" element={<Profile state={state.profilePage} />} />
             <Route
               path="/dialogs/*"
               element={
-                <Dialogs dialogs={dialogsData} messages={messagesData} /> // props дата файлы из index.js
+                <Dialogs state={state.dialogsPage}  /> // props дата файлы из state.js
               }
             />
             <Route path="/news/*" element={<News />} />

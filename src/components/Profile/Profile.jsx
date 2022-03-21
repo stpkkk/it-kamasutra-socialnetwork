@@ -4,15 +4,14 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 
-const Profile = ({post}) => {
+const Profile = ({state}) => {
   return (
     <div className={s.content}>
       <ProfileInfo />
-      <MyPosts post={post}/> 
+      <MyPosts post={state.posts}/> 
     </div>
   );
 };
 
 export default Profile;
 
-{/* <MyPosts post={post}/> - props из index.js */}
