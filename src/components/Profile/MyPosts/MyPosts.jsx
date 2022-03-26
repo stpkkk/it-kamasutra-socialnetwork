@@ -1,19 +1,22 @@
+import React from "react";
 import { createRef } from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-const MyPosts = ({ post }) => {
-  const postElement = post.map((p) => (
+const MyPosts = (props) => {
+  const postElement = props.posts.map((p) => (
     <Post message={p.message} likesCount={p.likesCount} key={p.id} />
   ));
 
   let newPostElement = createRef();
 
   let addPost = () => {
+	  debugger
     let text = newPostElement.current.value;
-    alert(text);
+    props.addPost(text);
   };
-  return (
-    <div className={s.PostBlock}>
+  
+   return (
+    <div className={s.postBlock}>
       <h3>My post</h3>
       <div>
         <div>

@@ -1,4 +1,4 @@
-export let state = {
+let state = {
   profilePage: {
     posts: [
       { id: 1, message: "Hi! How are you", likesCount: "7" },
@@ -28,3 +28,23 @@ export let state = {
     ],
   },
 };
+
+export let addPost = (postMessage) => {
+	debugger;
+  let newPost = {
+    id: 3,
+    message: postMessage,
+    likesCount: 0,
+  };
+  state.profilePage.posts.push(newPost);
+};
+
+export let addMessage = (dialogsMessage) => {
+  let newMessage = {
+    id: 7,
+    message: dialogsMessage,
+  };
+  state.profilePage.messages.push(newMessage);
+};
+
+export default state;

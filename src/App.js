@@ -7,9 +7,9 @@ import News from "./components/News/news";
 import Music from "./components/Music/music";
 import Settings from "./components/Settings/settings";
 import { Routes, Route } from "react-router-dom";
-import { state } from "./redux/state";
 
-const App = () => {
+const App = (props) => {
+  const { dialogsPage, profilePage } = props.state;
   return (
     <div className="app-wrapper">
       <Header />
@@ -18,12 +18,18 @@ const App = () => {
         <Routes>
           <Route
             path="/profile/*"
-            element={<Profile state={state.profilePage} />}
+            element={
+              <Profile posts={profilePage.posts} addPost={props.addPost} />
+            }
           />
           <Route
             path="/dialogs/*"
             element={
-              <Dialogs state={state.dialogsPage} /> // props дата файлы из state.js
+              <Dialogs
+				addMessage={props.addMessage}
+                messages={dialogsPage.messages}
+                dialogs={dialogsPage.dialogs}
+              /> // props дата файлы из state.js
             }
           />
           <Route path="/news/*" element={<News />} />
