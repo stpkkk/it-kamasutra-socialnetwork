@@ -10,12 +10,12 @@ const MyPosts = (props) => {
   let newPostElement = createRef();
 
   let addPost = () => {
-	  debugger
     let text = newPostElement.current.value;
-    props.addPost(text);
+    props.addPost(text); //функция из BLL
+    newPostElement.current.value = ""; //зануляем
   };
-  
-   return (
+
+  return (
     <div className={s.postBlock}>
       <h3>My post</h3>
       <div>
