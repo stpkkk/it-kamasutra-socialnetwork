@@ -19,14 +19,19 @@ const App = (props) => {
           <Route
             path="/profile/*"
             element={
-              <Profile posts={profilePage.posts} addPost={props.addPost} />
+              <Profile
+                posts={profilePage.posts}
+                addPost={props.addPost}
+                newPostText={profilePage.newPostText}
+				updateNewPostText={props.updateNewPostText}
+              />
             }
           />
           <Route
             path="/dialogs/*"
             element={
               <Dialogs
-				addMessage={props.addMessage}
+                addMessage={props.addMessage}
                 messages={dialogsPage.messages}
                 dialogs={dialogsPage.dialogs}
               /> // props дата файлы из state.js

@@ -10,9 +10,12 @@ const MyPosts = (props) => {
   let newPostElement = createRef();
 
   let addPost = () => {
+    props.addPost(); //функция из state убрали text
+  };
+
+  let onPostPage = () => {
     let text = newPostElement.current.value;
-    props.addPost(text); //функция из BLL
-    newPostElement.current.value = ""; //зануляем
+    props.updateNewPostText(text); //из state
   };
 
   return (
@@ -20,7 +23,13 @@ const MyPosts = (props) => {
       <h3>My post</h3>
       <div>
         <div>
-          <textarea ref={newPostElement} cols="30" rows="10"></textarea>
+          <textarea
+            onChange={onPostPage} //обработчик событий
+            ref={newPostElement}
+            value={props.newPostText} //из state
+            cols="30"
+            rows="10"
+          />
         </div>
         <div>
           <button onClick={addPost}>Add post</button>
