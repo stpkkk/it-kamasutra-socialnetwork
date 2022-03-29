@@ -1,5 +1,5 @@
-import s from "./ProfileInfo.module.css";
-const ProfileInfo = (props) => {
+import styles from "./ProfileInfo.module.css";
+const ProfileInfo = () => {
   return (
     <div>
       <div>
@@ -8,7 +8,7 @@ const ProfileInfo = (props) => {
           alt="lake"
         />
       </div>
-      <div className={s.descriptionBlock}>ava + description</div>
+      <div className={styles.descriptionBlock}>ava + description</div>
     </div>
   );
 };

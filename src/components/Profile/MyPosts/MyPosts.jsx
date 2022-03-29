@@ -1,30 +1,29 @@
 import React from "react";
 import { createRef } from "react";
-import s from "./MyPosts.module.css";
+import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 const MyPosts = (props) => {
+  let newPostElement = createRef();
   const postElement = props.posts.map((p) => (
     <Post message={p.message} likesCount={p.likesCount} key={p.id} />
   ));
-
-  let newPostElement = createRef();
 
   let addPost = () => {
     props.addPost(); //функция из state убрали text
   };
 
-  let onPostPage = () => {
+  let onPostChange = () => {
     let text = newPostElement.current.value;
     props.updateNewPostText(text); //из state
   };
 
   return (
-    <div className={s.postBlock}>
+    <div className={styles.postBlock}>
       <h3>My post</h3>
       <div>
         <div>
           <textarea
-            onChange={onPostPage} //обработчик событий
+            onChange={onPostChange} //обработчик событий
             ref={newPostElement}
             value={props.newPostText} //из state
             cols="30"
@@ -36,7 +35,7 @@ const MyPosts = (props) => {
           <button>Remove</button>
         </div>
       </div>
-      <div className={s.posts}>{postElement}</div>
+      <div className={styles.posts}>{postElement}</div>
     </div>
   );
 };

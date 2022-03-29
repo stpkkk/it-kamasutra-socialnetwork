@@ -1,7 +1,7 @@
-import s from "./Header.module.css";
+import styles from "./Header.module.css";
 const Header = () => {
   return (
-    <header className={s.header}>
+    <header className={styles.header}>
       <img src="https://cdn.logo.com/hotlink-ok/logo-social.png" alt="logo" />
     </header>
   );

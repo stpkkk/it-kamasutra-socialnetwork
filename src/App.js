@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/dialogs";
+import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/news";
 import Music from "./components/Music/music";
 import Settings from "./components/Settings/settings";
@@ -23,7 +23,7 @@ const App = (props) => {
                 posts={profilePage.posts}
                 addPost={props.addPost}
                 newPostText={profilePage.newPostText}
-				updateNewPostText={props.updateNewPostText}
+                updateNewPostText={props.updateNewPostText}
               />
             }
           />
@@ -31,10 +31,12 @@ const App = (props) => {
             path="/dialogs/*"
             element={
               <Dialogs
-                addMessage={props.addMessage}
                 messages={dialogsPage.messages}
+                addMessage={props.addMessage}
+                newMessageText={dialogsPage.newMessageText}
+                updateNewMessageText={props.updateNewMessageText}
                 dialogs={dialogsPage.dialogs}
-              /> // props дата файлы из state.js
+              />
             }
           />
           <Route path="/news/*" element={<News />} />
