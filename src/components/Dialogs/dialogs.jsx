@@ -12,10 +12,9 @@ const Dialogs = (props) => {
     <div className={styles.dialogs}>
       <div className={styles.dialogsItems}>{dialogElements}</div>
       <Messages
-	  	addMessage={props.addMessage}
+	  	dispatch={props.dispatch}
         messages={props.messages}
         newMessageText={props.newMessageText}
-        updateNewMessageText={props.updateNewMessageText}
       />
     </div>
   );

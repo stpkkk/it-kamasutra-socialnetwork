@@ -9,12 +9,12 @@ const MyPosts = (props) => {
   ));
 
   let addPost = () => {
-    props.addPost(); //функция из state убрали text
+    props.dispatch({ type: "addPost" });
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.updateNewPostText(text); //из state
+    props.dispatch({ type: "updateNewPostText", newText: text }); //из state
   };
 
   return (

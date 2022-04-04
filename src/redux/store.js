@@ -31,42 +31,43 @@ let store = {
       newMessageText: "на пенек сел",
     },
   },
-  getState() {
-    return this._state;
-  },
   _callSubscriber() {
     console.log("State changed");
-  },// в прошлом rerenderEntireTree, теперь мы уведомляем подписчика
-  addPost() {
-    let newPost = {
-      id: 3,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0,
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = ""; //зануляем2
-    this._callSubscriber(this._state);
-  },
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-  addMessage() {
-    let newMessage = {
-      id: 7,
-      message: this._state.dialogsPage.newMessageText,
-    };
-    this._state.dialogsPage.messages.push(newMessage);
-    this._state.dialogsPage.newMessageText = "";
-    this._callSubscriber(this._state);
-  },
-  updateNewMessageText(newText) {
-    this._state.dialogsPage.newMessageText = newText;
-    this._callSubscriber(this._state);
+  }, // в прошлом rerenderEntireTree, теперь мы уведомляем подписчика
+
+  getState() {
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer;
   }, //observer наблюдатель
+
+  dispatch(action) {
+    if (action.type === "addPost") {
+      let newPost = {
+        id: 3,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0,
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = ""; //зануляем2
+      this._callSubscriber(this._state);
+    } else if (action.type === "updateNewPostText") {
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === "addMessage") {
+      let newMessage = {
+        id: 7,
+        message: this._state.dialogsPage.newMessageText,
+      };
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessageText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "updateNewMessageText") {
+      this._state.dialogsPage.newMessageText = action.newText;
+      this._callSubscriber(this._state);
+    }
+  },
 };
 
 export default store;
