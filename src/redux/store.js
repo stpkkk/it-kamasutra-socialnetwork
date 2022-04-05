@@ -1,3 +1,8 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
+
 let store = {
   _state: {
     profilePage: {
@@ -43,7 +48,7 @@ let store = {
   }, //observer наблюдатель
 
   dispatch(action) {
-    if (action.type === "addPost") {
+    if (action.type === "ADD-POST") {
       let newPost = {
         id: 3,
         message: this._state.profilePage.newPostText,
@@ -52,10 +57,10 @@ let store = {
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText = ""; //зануляем2
       this._callSubscriber(this._state);
-    } else if (action.type === "updateNewPostText") {
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
       this._state.profilePage.newPostText = action.newText;
       this._callSubscriber(this._state);
-    } else if (action.type === "addMessage") {
+    } else if (action.type === "ADD-MESSAGE") {
       let newMessage = {
         id: 7,
         message: this._state.dialogsPage.newMessageText,
@@ -63,11 +68,26 @@ let store = {
       this._state.dialogsPage.messages.push(newMessage);
       this._state.dialogsPage.newMessageText = "";
       this._callSubscriber(this._state);
-    } else if (action.type === "updateNewMessageText") {
+    } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
       this._state.dialogsPage.newMessageText = action.newText;
       this._callSubscriber(this._state);
     }
   },
 };
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+//сокращенная запись если функция только возвращает что-то
+export const updateNewPostTextActionCreator = (text) => {
+  return {
+    type: UPDATE_NEW_POST_TEXT,
+    newText: text,
+  };
+};
+
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
+export const updateNewMessageTextActionCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_TEXT,
+  newText: text,
+});
 
 export default store;

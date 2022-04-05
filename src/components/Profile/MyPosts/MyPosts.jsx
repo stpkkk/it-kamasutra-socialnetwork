@@ -2,6 +2,11 @@ import React from "react";
 import { createRef } from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
+} from "../../../redux/store";
+
 const MyPosts = (props) => {
   let newPostElement = createRef();
   const postElement = props.posts.map((p) => (
@@ -9,12 +14,12 @@ const MyPosts = (props) => {
   ));
 
   let addPost = () => {
-    props.dispatch({ type: "addPost" });
+    props.dispatch(addPostActionCreator());
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.dispatch({ type: "updateNewPostText", newText: text }); //из state
+    props.dispatch(updateNewPostTextActionCreator(text)); //из state привязались с помощью type
   };
 
   return (
