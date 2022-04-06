@@ -1,6 +1,6 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_MESSAGE = "ADD-MESSAGE";
+const SEND_MESSAGE = "SEND-MESSAGE";
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 
 let store = {
@@ -60,7 +60,7 @@ let store = {
     } else if (action.type === "UPDATE-NEW-POST-TEXT") {
       this._state.profilePage.newPostText = action.newText;
       this._callSubscriber(this._state);
-    } else if (action.type === "ADD-MESSAGE") {
+    } else if (action.type === "SEND-MESSAGE") {
       let newMessage = {
         id: 7,
         message: this._state.dialogsPage.newMessageText,
@@ -84,7 +84,7 @@ export const updateNewPostTextActionCreator = (text) => {
   };
 };
 
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
 export const updateNewMessageTextActionCreator = (text) => ({
   type: UPDATE_NEW_MESSAGE_TEXT,
   newText: text,
