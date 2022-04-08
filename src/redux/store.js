@@ -1,5 +1,9 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+
 const SEND_MESSAGE = "SEND-MESSAGE";
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 
@@ -48,35 +52,14 @@ let store = {
   }, //observer наблюдатель
 
   dispatch(action) {
-    if (action.type === "ADD-POST") {
-      let newPost = {
-        id: 3,
-        message: this._state.profilePage.newPostText,
-        likesCount: 0,
-      };
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = ""; //зануляем2
-      this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === "SEND-MESSAGE") {
-      let newMessage = {
-        id: 7,
-        message: this._state.dialogsPage.newMessageText,
-      };
-      this._state.dialogsPage.messages.push(newMessage);
-      this._state.dialogsPage.newMessageText = "";
-      this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
-      this._state.dialogsPage.newMessageText = action.newText;
-      this._callSubscriber(this._state);
-    }
+    profileReducer(this._state.profilePage, action);
+    dialogsReducer(this._state.dialogsPage, action);
+    this._callSubscriber(this._state);
   },
 };
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
-//сокращенная запись если функция только возвращает что-то
+export const addPostActionCreator = () => ({ type: ADD_POST }); //action
+//без return, сокращенная запись если функция только возвращает что-то
 export const updateNewPostTextActionCreator = (text) => {
   return {
     type: UPDATE_NEW_POST_TEXT,
