@@ -3,7 +3,7 @@ import Message from "../Message/Message";
 import {
   sendMessageActionCreator,
   updateNewMessageTextActionCreator,
-} from "../../../redux/store";
+} from "../../../redux/dialogs-reducer";
 
 export const Messages = (props) => {
   
