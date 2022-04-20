@@ -1,23 +1,21 @@
+import React from "react";
 import styles from "../Dialogs.module.css";
 import Message from "../Message/Message";
-import {
-  sendMessageActionCreator,
-  updateNewMessageTextActionCreator,
-} from "../../../redux/dialogs-reducer";
+
+
 
 export const Messages = (props) => {
-  
   let messagesElements = props.messages.map((m) => (
     <Message message={m.message} key={m.id} />
   ));
 
-  let sendMessage = () => {
-    props.dispatch(sendMessageActionCreator());
+  let onSendMessage = () => {
+    props.sendMessageActionCreator();
   };
 
   let onMessageChange = (event) => {
     let text = event.target.value;
-    props.dispatch(updateNewMessageTextActionCreator(text));
+    props.updateNewMessageTextActionCreator(text);
   };
 
   return (
@@ -33,8 +31,10 @@ export const Messages = (props) => {
         />
       </div>
       <div>
-        <button onClick={sendMessage}>Send message</button>
+        <button onClick={onSendMessage}>Send message</button>
       </div>
     </div>
   );
 };
+
+export default Messages;

@@ -1,21 +1,18 @@
 import React from "react";
 import styles from "./Dialogs.module.css";
 import DialogItem from "./Dialog/DialogItem";
-import { Messages } from "./Messages/Messages";
+import MessagesContainer from "./Messages/MessagesContainer";
 
 const Dialogs = (props) => {
-  let dialogElements = props.dialogs.map((d) => (
-    <DialogItem name={d.name} id={d.id} key={d.id} /> //key прописываем иначе выдаст ошибку в консоли
+  const { dialogs } = props.state.dialogsPage;
+  let dialogElements = dialogs.map((d) => (
+    <DialogItem name={d.name} key={d.id} />
   ));
 
   return (
     <div className={styles.dialogs}>
       <div className={styles.dialogsItems}>{dialogElements}</div>
-      <Messages
-	  	dispatch={props.dispatch}
-        messages={props.messages}
-        newMessageText={props.newMessageText}
-      />
+      <MessagesContainer {...props}/>
     </div>
   );
 };

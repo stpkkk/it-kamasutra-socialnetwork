@@ -9,34 +9,14 @@ import Settings from "./components/Settings/settings";
 import { Routes, Route } from "react-router-dom";
 
 const App = (props) => {
-  const { dialogsPage, profilePage } = props.state;
   return (
     <div className="app-wrapper">
       <Header />
       <Navbar />
       <div className="app-wrapper-content">
         <Routes>
-          <Route
-            path="/profile/*"
-            element={
-              <Profile
-                posts={profilePage.posts}
-                dispatch={props.dispatch}
-                newPostText={profilePage.newPostText}
-              />
-            }
-          />
-          <Route
-            path="/dialogs/*"
-            element={
-              <Dialogs
-                messages={dialogsPage.messages}
-                dispatch={props.dispatch}
-                newMessageText={dialogsPage.newMessageText}
-                dialogs={dialogsPage.dialogs}
-              />
-            }
-          />
+          <Route path="/profile/*" element={<Profile store={props.store} />} />
+          <Route path="/dialogs/*" element={<Dialogs {...props} />} />
           <Route path="/news/*" element={<News />} />
           <Route path="/music/*" element={<Music />} />
           <Route path="/settings/*" element={<Settings />} />
