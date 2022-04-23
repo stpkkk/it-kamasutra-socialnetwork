@@ -34,3 +34,7 @@
 	color: rgb(9, 40, 68);
 	padding: 10px;
 }
+
+.messages textarea {
+	margin-top: 40px;
+}
