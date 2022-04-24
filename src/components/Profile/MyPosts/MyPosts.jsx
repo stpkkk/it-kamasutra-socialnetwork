@@ -3,7 +3,7 @@ import { createRef } from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = (props) => {
+const MyPosts = (props) => {	
   let newPostElement = createRef();
   const postElement = props.posts.map((p) => (         //пропсы с MyPostsContainer
     <Post message={p.message} likesCount={p.likesCount} key={p.id} />
@@ -11,7 +11,7 @@ const MyPosts = (props) => {
 
   let onAddPost = () => {
     props.addPost();
-  };//пропсы из контейнера
+  };
 
   let onPostChange = () => {
     let text = newPostElement.current.value;

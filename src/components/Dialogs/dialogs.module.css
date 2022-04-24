@@ -1,21 +1,21 @@
-.dialogs {
+.messagesContainer {
   display: grid;
   grid-template-columns: 2fr 10fr;
 }
 
 .dialogsItems {
   padding: 10px;
-  
 }
 
 .dialogsItems .active {
-  color: gold;
+  color: #ffffff;
 }
 
 
+
 .dialog {
-	text-decoration: none;
-	color: aliceblue;
+  text-decoration: none;
+  color: aliceblue;
 }
 
 .messages {
@@ -23,18 +23,18 @@
 }
 
 .messages ul {
-	margin:0;
+  margin: 0;
 }
 
 .messages .active {
-  color: gold;
+  color: #ffffff;
 }
 
 .message {
-	color: rgb(9, 40, 68);
-	padding: 10px;
+  color: rgb(9, 40, 68);
+  padding: 10px;
 }
 
 .messages textarea {
-	margin-top: 40px;
+  margin-top: 40px;
 }
