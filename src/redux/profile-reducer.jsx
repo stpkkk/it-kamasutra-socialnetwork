@@ -11,18 +11,24 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
+      let stateCopy = { ...state };
       let newPost = {
         id: 3,
         message: state.newPostText,
         likesCount: 0,
       }; // поменяли логику if,else на switch, case
-      state.posts.push(newPost);
-      state.newPostText = ""; //зануляем2
-      return state; // return чтобы остановить первый case
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+      stateCopy.posts.push(newPost);
+      stateCopy.newPostText = ""; //зануляем2
+      return stateCopy; // return чтобы остановить первый case
+    }
+
+    case UPDATE_NEW_POST_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.posts = [...state.posts];
+      stateCopy.newPostText = action.newText;
+      return stateCopy;
+    }
     default:
       return state; //вовзращает default если нет case
   }
