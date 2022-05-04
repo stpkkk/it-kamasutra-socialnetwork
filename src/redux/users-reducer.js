@@ -4,30 +4,30 @@ const SET_USERS = "SET_USERS";
 
 let initialState = {
   users: [
-    {
-      id: 1,
-	  photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyt0bSJhqucS4mE6t1y3EyusW7wKcGGgEnA&usqp=CAU",
-      followed: true,
-      fullName: "Varg",
-      status: "like a boss",
-      location: { city: "Oslo", country: "Norway" },
-    },
-    {
-      id: 2,
-	  photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyt0bSJhqucS4mE6t1y3EyusW7wKcGGgEnA&usqp=CAU",
-      followed: false,
-      fullName: "Iggy",
-      status: "junior-developer",
-      location: { city: "LA", country: "USA" },
-    },
-    {
-      id: 3,
-	  photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyt0bSJhqucS4mE6t1y3EyusW7wKcGGgEnA&usqp=CAU",
-      followed: false,
-      fullName: "Valera",
-      status: "че",
-      location: { city: "Petrozavodsk", country: "Russia" },
-    },
+    // {
+    //   id: 1,
+	//   photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyt0bSJhqucS4mE6t1y3EyusW7wKcGGgEnA&usqp=CAU",
+    //   followed: true,
+    //   fullName: "Varg",
+    //   status: "like a boss",
+    //   location: { city: "Oslo", country: "Norway" },
+    // },
+    // {
+    //   id: 2,
+	//   photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyt0bSJhqucS4mE6t1y3EyusW7wKcGGgEnA&usqp=CAU",
+    //   followed: false,
+    //   fullName: "Iggy",
+    //   status: "junior-developer",
+    //   location: { city: "LA", country: "USA" },
+    // },
+    // {
+    //   id: 3,
+	//   photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyt0bSJhqucS4mE6t1y3EyusW7wKcGGgEnA&usqp=CAU",
+    //   followed: false,
+    //   fullName: "Valera",
+    //   status: "че",
+    //   location: { city: "Petrozavodsk", country: "Russia" },
+    // },
   ],
 };
 
@@ -53,9 +53,14 @@ const usersReducer = (state = initialState, action) => {
           return u;
         }),
       };
-    case SET_USERS: {
-      return { ...state, users: [...state.users, ...action.users ]};
-    }
+	  case SET_USERS: {
+		if(state.users.length > 0) {
+			return state
+		} //иначе нарисует 2 раза state
+		return { ...state,
+			users:[ ...state.users, ...action.users ],
+		}
+  }
     default:
       return state; //вовзращает default если нет case
   }
