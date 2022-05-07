@@ -4,6 +4,7 @@ import * as axios from "axios"; //импортируем все что там э
 import userPhoto from "../../assets/images/user.png"
 
 const Users = (props) => {
+	let getUsers = () => {
   if (props.users.length === 0) {
     axios
       .get("https://social-network.samuraijs.com/api/1.0/users")
@@ -11,6 +12,7 @@ const Users = (props) => {
         props.setUsers(response.data.items);
       }); //подключили дату с сервера
   }
+}
   // props.setUsers( [{
   // 	id: 1,
   // 	photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyt0bSJhqucS4mE6t1y3EyusW7wKcGGgEnA&usqp=CAU",
@@ -37,7 +39,8 @@ const Users = (props) => {
   //   },])
 
   return (
-    <div>
+	  <div>
+		<button onClick = {getUsers}>Get Users</button>
       {props.users.map((u) => (
         <div>
           <span>
