@@ -13,6 +13,7 @@ const Users = (props) => {
       }); //подключили дату с сервера
   }
 }
+
   // props.setUsers( [{
   // 	id: 1,
   // 	photoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyt0bSJhqucS4mE6t1y3EyusW7wKcGGgEnA&usqp=CAU",
