@@ -1,18 +1,21 @@
+// В этой компоненте впервые используем классы!!!
+
 import React from "react";
 import styles from "./users.module.css";
 import * as axios from "axios"; //импортируем все что там экспортируется под общим названием axios
 import userPhoto from "../../assets/images/user.png";
 
-class Users extends React.Component {
-  constructor(props) {
-    super(props);
-    {
-      axios
-        .get("https://social-network.samuraijs.com/api/1.0/users")
-        .then((response) => {
-          this.props.setUsers(response.data.items);
-        }); //подключили дату с сервера
-    }
+class UsersС extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }  Если конструктор наследует только от родительского обьекта, то можно упростить написание без constructor и super
+
+  componentDidMount() {
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+      }); //подключили дату с сервера
   }
 
   render() {
