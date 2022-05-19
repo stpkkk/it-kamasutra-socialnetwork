@@ -1,13 +1,16 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
-const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
-const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+
 let initialState = {
   users: [],
   pageSize: 5,
   totalUsersCount: 0, //19 из головы
   currentPage: 1,
+  isFetching: true, //preloader
   //   users: [
   //     {
   //       id: 1,
@@ -59,17 +62,20 @@ const usersReducer = (state = initialState, action) => {
         }),
       };
     case SET_USERS: {
-    //   if (state.users.length > 0) {
-    //     return state;
-    //   } //иначе нарисует 2 раза state
-      return { ...state, users: action.users};
+      //   if (state.users.length > 0) {
+      //     return state;
+      //   } //иначе нарисует 2 раза state
+      return { ...state, users: action.users };
     }
-	case SET_CURRENT_PAGE: {
-		return { ...state, currentPage: action.currentPage}  //номер страницы пагинации
-	}
-	case SET_TOTAL_USERS_COUNT: {
-		return { ...state, totalUsersCount: action.count}
-	}
+    case SET_CURRENT_PAGE: {
+      return { ...state, currentPage: action.currentPage }; //номер страницы пагинации
+    }
+    case SET_TOTAL_USERS_COUNT: {
+      return { ...state, totalUsersCount: action.count };
+    }
+    case TOGGLE_IS_FETCHING: {
+      return { ...state, isFetching: action.isFetching };
+    }
     default:
       return state; //вовзращает default если нет case
   }
@@ -78,8 +84,17 @@ const usersReducer = (state = initialState, action) => {
 export const followActionCreator = (userId) => ({ type: FOLLOW, userId });
 export const unfollowActionCreator = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
-export const setCurrentPageActionCreator = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage }); //currentPage из action
-export const setTotalUsersCountActionCreator = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount });
-
+export const setCurrentPageActionCreator = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
+}); //currentPage из action
+export const setTotalUsersCountActionCreator = (totalUsersCount) => ({
+  type: SET_TOTAL_USERS_COUNT,
+  count: totalUsersCount,
+});
+export const toggleIsFetchingActionCreation = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching, //из case
+});//preloader
 
 export default usersReducer;
