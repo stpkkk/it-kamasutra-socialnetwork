@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import {
-  followActionCreator,
-  setCurrentPageActionCreator,
-  setUsersActionCreator,
-  unfollowActionCreator,
-  setTotalUsersCountActionCreator,
-  toggleIsFetchingActionCreation,
+  follow,
+  setCurrentPage,
+  setUsers,
+  unfollow,
+  setTotalUsersCount,
+  toggleIsFetching,
 } from "../../redux/users-reducer";
 
 class UsersContainer extends React.Component {
@@ -32,7 +32,7 @@ class UsersContainer extends React.Component {
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
-	this.props.toggleIsFetching(true);//preloader
+    this.props.toggleIsFetching(true); //preloader
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}` //прописали query параметры для пагинации
@@ -72,27 +72,34 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userId) => {
-      dispatch(followActionCreator(userId));
-    },
-    unfollow: (userId) => {
-      dispatch(unfollowActionCreator(userId));
-    },
-    setUsers: (users) => {
-      dispatch(setUsersActionCreator(users));
-    },
-    setCurrentPage: (pageNumber) => {
-      dispatch(setCurrentPageActionCreator(pageNumber));
-    },
-    setTotalUsersCount: (totalCount) => {
-      dispatch(setTotalUsersCountActionCreator(totalCount));
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetchingActionCreation(isFetching)); //preloader
-    },
-  };
-};
+// let mapDispatchToProps = (dispatch) => {
+//   return {
+//     follow: (userId) => {
+//       dispatch(followActionCreator(userId));
+//     },
+//     unfollow: (userId) => {
+//       dispatch(unfollowActionCreator(userId));
+//     },
+//     setUsers: (users) => {
+//       dispatch(setUsersActionCreator(users));
+//     },
+//     setCurrentPage: (pageNumber) => {
+//       dispatch(setCurrentPageActionCreator(pageNumber));
+//     },
+//     setTotalUsersCount: (totalCount) => {
+//       dispatch(setTotalUsersCountActionCreator(totalCount));
+//     },
+//     toggleIsFetching: (isFetching) => {
+//       dispatch(toggleIsFetchingActionCreation(isFetching)); //preloader
+//     },
+//   };
+// }; сокращенный mapDispatchToProps в connect
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsFetching,
+})(UsersContainer);
