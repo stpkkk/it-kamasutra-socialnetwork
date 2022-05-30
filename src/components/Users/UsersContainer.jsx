@@ -72,28 +72,7 @@ let mapStateToProps = (state) => {
   };
 };
 
-// let mapDispatchToProps = (dispatch) => {
-//   return {
-//     follow: (userId) => {
-//       dispatch(followActionCreator(userId));
-//     },
-//     unfollow: (userId) => {
-//       dispatch(unfollowActionCreator(userId));
-//     },
-//     setUsers: (users) => {
-//       dispatch(setUsersActionCreator(users));
-//     },
-//     setCurrentPage: (pageNumber) => {
-//       dispatch(setCurrentPageActionCreator(pageNumber));
-//     },
-//     setTotalUsersCount: (totalCount) => {
-//       dispatch(setTotalUsersCountActionCreator(totalCount));
-//     },
-//     toggleIsFetching: (isFetching) => {
-//       dispatch(toggleIsFetchingActionCreation(isFetching)); //preloader
-//     },
-//   };
-// }; сокращенный mapDispatchToProps в connect
+
 
 export default connect(mapStateToProps, {
   follow,

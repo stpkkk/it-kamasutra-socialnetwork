@@ -6,9 +6,9 @@ import Header from "./components/Header/Header";
 import Music from "./components/Music/music";
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/news";
-import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/settings";
 import UsersContainer from "./components/Users/UsersContainer"
+import ProfileContainer from './components/Profile/Profile.Container';
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
       <Navbar />
       <div className="app-wrapper-content">
         <Routes>
-          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/profile/*" element={<ProfileContainer />} />
           <Route path="/messages/*" element={<MessagesContainer />} />
           <Route path="/users/*" element={<UsersContainer />} />
           <Route path="/news/*" element={<News />} />
